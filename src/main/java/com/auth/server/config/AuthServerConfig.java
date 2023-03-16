@@ -32,9 +32,8 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
     }*/
 
     // authorization code grant type
-    @Override
-    public void configure(
-            ClientDetailsServiceConfigurer clients)
+    /*@Override
+    public void configure(ClientDetailsServiceConfigurer clients)
             throws Exception {
         clients.inMemory()
                 .withClient("client")
@@ -42,5 +41,16 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
                 .authorizedGrantTypes("authorization_code")
                 .scopes("read")
                 .redirectUris("http://localhost:9090/home");
+    }*/
+
+    // client creddentials grant type
+    @Override
+    public void configure(ClientDetailsServiceConfigurer clients)
+            throws Exception {
+        clients.inMemory()
+                .withClient("client")
+                .secret("secret")
+                .authorizedGrantTypes("client_credentials")
+                .scopes("info");
     }
 }

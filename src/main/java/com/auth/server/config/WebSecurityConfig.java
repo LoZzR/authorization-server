@@ -37,9 +37,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     // authorization code grant type
-    @Override
+    /*@Override
     protected void configure(HttpSecurity http)
             throws Exception {
         http.formLogin();
-    }
+    }*/
 }
