@@ -7,6 +7,7 @@ import org.springframework.security.oauth2.config.annotation.configurers.ClientD
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 
 @Configuration
 @EnableAuthorizationServer
@@ -31,7 +32,11 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
                         "password",
                         // refresh token grant type
                         "refresh_token")
-                .scopes("read");
+                .scopes("read")
+                .and()
+                .withClient("resourceserver")
+                .secret("resourceserversecret");
+        ;
     }
 
     // authorization code grant type
@@ -56,4 +61,8 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
                 .authorizedGrantTypes("client_credentials")
                 .scopes("info");
     }*/
+    public void configure(AuthorizationServerSecurityConfigurer security) {
+        security.checkTokenAccess
+                ("isAuthenticated()");
+    }
 }
