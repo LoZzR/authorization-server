@@ -21,15 +21,18 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
     }
 
     // password grant type
-    /*@Override
+    @Override
     public void configure(ClientDetailsServiceConfigurer clients)
             throws Exception {
         clients.inMemory()
                 .withClient("client")
                 .secret("secret")
-                .authorizedGrantTypes("password")
+                .authorizedGrantTypes(
+                        "password",
+                        // refresh token grant type
+                        "refresh_token")
                 .scopes("read");
-    }*/
+    }
 
     // authorization code grant type
     /*@Override
@@ -44,7 +47,7 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
     }*/
 
     // client creddentials grant type
-    @Override
+    /*@Override
     public void configure(ClientDetailsServiceConfigurer clients)
             throws Exception {
         clients.inMemory()
@@ -52,5 +55,5 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
                 .secret("secret")
                 .authorizedGrantTypes("client_credentials")
                 .scopes("info");
-    }
+    }*/
 }
