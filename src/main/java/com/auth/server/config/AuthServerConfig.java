@@ -113,5 +113,7 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
 
     public void configure(AuthorizationServerSecurityConfigurer security) {
         security.checkTokenAccess("isAuthenticated()");
+        security.tokenKeyAccess
+                ("isAuthenticated()");
     }
 }
